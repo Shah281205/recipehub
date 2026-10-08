@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Recipe Hub - Dashboard</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff8f0;
+        }
+
+        .navbar {
+            background-color: #e67e22;
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logout {
+            color: white;
+            text-decoration: none;
+            background-color: #c0392b;
+            padding: 10px 18px;
+            border-radius: 5px;
+        }
+
+        .logout:hover {
+            background-color: #a93226;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .welcome {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 17px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 900px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            color: #e67e22;
+            margin-top: 0;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 18px;
+            background-color: #e67e22;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .card a:hover {
+            background-color: #d35400;
+        }
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+
+        <div class="logo">
+            🍴 Recipe Hub
+        </div>
+
+        <a class="logout"
+           href="/logout">
+            Logout
+        </a>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <div class="container">
+
+        <h1>
+            Welcome to Recipe Hub! 👋
+        </h1>
+
+        <p class="welcome">
+            Manage your recipes and discover delicious recipes
+            from other users.
+        </p>
+
+
+        <div class="cards">
+
+
+            <!-- SHARE RECIPE -->
+
+            <div class="card">
+
+                <h2>
+                    🍳 Share Recipe
+                </h2>
+
+                <p>
+                    Add your own recipe and share it with
+                    the Recipe Hub community.
+                </p>
+
+                <a href="/add-recipe">
+                    Add Recipe
+                </a>
+
+            </div>
+
+
+            <!-- DISCOVER RECIPES -->
+
+            <div class="card">
+
+                <h2>
+                    🔍 Discover Recipes
+                </h2>
+
+                <p>
+                    Explore delicious recipes shared by
+                    other users.
+                </p>
+
+                <a href="/recipes">
+                    Explore
+                </a>
+
+            </div>
+
+
+            <!-- MY RECIPES -->
+
+            <div class="card">
+
+                <h2>
+                    📖 My Recipes
+                </h2>
+
+                <p>
+                    View and manage the recipes you have shared.
+                </p>
+
+                <a href="/my-recipes">
+                    My Recipes
+                </a>
+
+            </div>
+
+
+            <!-- MY PROFILE -->
+
+            <div class="card">
+
+                <h2>
+                    👤 My Profile
+                </h2>
+
+                <p>
+                    View and manage your account information.
+                </p>
+
+                <a href="/profile">
+                    Profile
+                </a>
+
+            </div>
+
+
+            <!-- MY FAVORITES -->
+
+            <div class="card">
+
+                <h2>
+                    ❤️ My Favorites
+                </h2>
+
+                <p>
+                    View all the recipes you have saved
+                    as your favorites.
+                </p>
+
+                <a href="/favorites">
+                    My Favorites
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

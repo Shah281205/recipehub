@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recipe Hub - Edit Recipe</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff8f0;
+        }
+
+        .navbar {
+            background-color: #e67e22;
+            color: white;
+            padding: 18px 40px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 650px;
+            max-width: 92%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #e67e22;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        .image-preview {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .image-preview img {
+            max-width: 300px;
+            max-height: 200px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .no-image {
+            color: #777;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #d35400;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hint {
+            color: #777;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <div class="logo">
+            🍴 Recipe Hub
+        </div>
+
+    </div>
+
+
+    <div class="container">
+
+        <h1>
+            ✏️ Edit Recipe
+        </h1>
+
+
+        <form action="/edit-recipe" method="post">
+
+            <!-- RECIPE ID -->
+
+            <input type="hidden"
+                   name="id"
+                   th:value="${recipe.id}">
+
+
+            <!-- RECIPE TITLE -->
+
+            <label>
+                Recipe Name
+            </label>
+
+            <input type="text"
+                   name="title"
+                   th:value="${recipe.title}"
+                   placeholder="Enter recipe name"
+                   required>
+
+
+            <!-- IMAGE URL -->
+
+            <label>
+                🖼️ Recipe Image URL
+            </label>
+
+            <input type="url"
+                   name="imageUrl"
+                   th:value="${recipe.imageUrl}"
+                   placeholder="Paste image URL here">
+
+            <p class="hint">
+                Example: https://example.com/food.jpg
+            </p>
+
+
+            <!-- IMAGE PREVIEW -->
+
+            <div class="image-preview"
+                 th:if="${recipe.imageUrl != null and !#strings.isEmpty(recipe.imageUrl)}">
+
+                <p>
+                    Current Image:
+                </p>
+
+                <img th:src="${recipe.imageUrl}"
+                     alt="Recipe Image">
+
+            </div>
+
+
+            <div class="image-preview"
+                 th:if="${recipe.imageUrl == null or #strings.isEmpty(recipe.imageUrl)}">
+
+                <p class="no-image">
+                    No image added yet.
+                </p>
+
+            </div>
+
+
+            <!-- INGREDIENTS -->
+
+            <label>
+                🥕 Ingredients
+            </label>
+
+            <textarea name="ingredients"
+                      th:text="${recipe.ingredients}"
+                      placeholder="Enter ingredients"
+                      required></textarea>
+
+
+            <!-- INSTRUCTIONS -->
+
+            <label>
+                👨‍🍳 Instructions
+            </label>
+
+            <textarea name="instructions"
+                      th:text="${recipe.instructions}"
+                      placeholder="Enter cooking instructions"
+                      required></textarea>
+
+
+            <!-- UPDATE -->
+
+            <button type="submit">
+                💾 Update Recipe
+            </button>
+
+        </form>
+
+
+        <a class="back"
+           href="/my-recipes">
+
+            ← Back to My Recipes
+
+        </a>
+
+    </div>
+
+</body>
+
+</html>

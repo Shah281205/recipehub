@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Recipe Hub - System Settings</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff8f0;
+        }
+
+        .navbar {
+            background-color: #e67e22;
+            color: white;
+            padding: 18px 40px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 700px;
+            max-width: 90%;
+            margin: 40px auto;
+        }
+
+        .box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #e67e22;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .setting {
+            margin-top: 25px;
+        }
+
+        .setting label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .setting select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .save-button {
+            width: 100%;
+            margin-top: 30px;
+            padding: 13px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .save-button:hover {
+            background-color: #219150;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <div class="logo">
+            👑 Recipe Hub Admin
+        </div>
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="box">
+
+            <h1>
+                ⚙️ System Settings
+            </h1>
+
+
+            <form action="/admin/settings"
+                  method="post">
+
+
+                <!-- RECIPE APPROVAL -->
+
+                <div class="setting">
+
+                    <label>
+                        Recipe Approval
+                    </label>
+
+                    <select name="recipeApproval">
+
+                        <option
+                            value="Admin Approval Required"
+                            th:selected="${setting.recipeApproval == 'Admin Approval Required'}">
+
+                            Admin Approval Required
+
+                        </option>
+
+                        <option
+                            value="Automatic Approval"
+                            th:selected="${setting.recipeApproval == 'Automatic Approval'}">
+
+                            Automatic Approval
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- COMMENTS -->
+
+                <div class="setting">
+
+                    <label>
+                        Comments
+                    </label>
+
+                    <select name="comments">
+
+                        <option
+                            value="Comments Enabled"
+                            th:selected="${setting.comments == 'Comments Enabled'}">
+
+                            Comments Enabled
+
+                        </option>
+
+                        <option
+                            value="Comments Disabled"
+                            th:selected="${setting.comments == 'Comments Disabled'}">
+
+                            Comments Disabled
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- RATINGS -->
+
+                <div class="setting">
+
+                    <label>
+                        Ratings
+                    </label>
+
+                    <select name="ratings">
+
+                        <option
+                            value="Ratings Enabled"
+                            th:selected="${setting.ratings == 'Ratings Enabled'}">
+
+                            Ratings Enabled
+
+                        </option>
+
+                        <option
+                            value="Ratings Disabled"
+                            th:selected="${setting.ratings == 'Ratings Disabled'}">
+
+                            Ratings Disabled
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- SAVE -->
+
+                <button type="submit"
+                        class="save-button">
+
+                    💾 Save Settings
+
+                </button>
+
+            </form>
+
+
+            <a class="back"
+               href="/admin/dashboard">
+
+                ← Back to Admin Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

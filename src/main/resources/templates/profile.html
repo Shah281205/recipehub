@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Recipe Hub - My Profile</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff8f0;
+        }
+
+        .navbar {
+            background-color: #e67e22;
+            color: white;
+            padding: 18px 40px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 650px;
+            max-width: 92%;
+            margin: 40px auto;
+        }
+
+        .box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e67e22;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #e67e22;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .role {
+            background-color: #f4f4f4;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #219150;
+        }
+
+        .password-button {
+            background-color: #3498db;
+        }
+
+        .password-button:hover {
+            background-color: #2980b9;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+
+        <div class="logo">
+            🍴 Recipe Hub
+        </div>
+
+    </div>
+
+
+    <div class="container">
+
+
+        <h1>
+            👤 My Profile
+        </h1>
+
+
+        <!-- MESSAGE -->
+
+        <div th:if="${error}"
+             class="error"
+             th:text="${error}">
+        </div>
+
+
+        <div th:if="${success}"
+             class="success"
+             th:text="${success}">
+        </div>
+
+
+        <!-- PROFILE INFORMATION -->
+
+        <div class="box">
+
+            <h2>
+                👤 Profile Information
+            </h2>
+
+
+            <div class="info">
+
+                Update your name and email here.
+                Your password is managed separately below.
+
+            </div>
+
+
+            <form action="/profile/update"
+                  method="post">
+
+
+                <!-- NAME -->
+
+                <label>
+                    Name
+                </label>
+
+                <input type="text"
+                       name="name"
+                       th:value="${user.name}"
+                       placeholder="Enter your name"
+                       required>
+
+
+                <!-- EMAIL -->
+
+                <label>
+                    Email
+                </label>
+
+                <input type="email"
+                       name="email"
+                       th:value="${user.email}"
+                       placeholder="Enter your email"
+                       required>
+
+
+                <!-- ROLE -->
+
+                <label>
+                    Role
+                </label>
+
+                <input type="text"
+                       class="role"
+                       th:value="${user.role}"
+                       readonly>
+
+
+                <!-- UPDATE -->
+
+                <button type="submit">
+                    💾 Update Profile
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+        <!-- CHANGE PASSWORD -->
+
+        <div class="box">
+
+            <h2>
+                🔐 Change Password
+            </h2>
+
+
+            <form action="/profile/change-password"
+                  method="post">
+
+
+                <!-- CURRENT PASSWORD -->
+
+                <label>
+                    Current Password
+                </label>
+
+                <input type="password"
+                       name="currentPassword"
+                       placeholder="Enter current password"
+                       required>
+
+
+                <!-- NEW PASSWORD -->
+
+                <label>
+                    New Password
+                </label>
+
+                <input type="password"
+                       name="newPassword"
+                       placeholder="Enter new password"
+                       minlength="6"
+                       required>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <label>
+                    Confirm New Password
+                </label>
+
+                <input type="password"
+                       name="confirmPassword"
+                       placeholder="Confirm new password"
+                       minlength="6"
+                       required>
+
+
+                <!-- CHANGE -->
+
+                <button type="submit"
+                        class="password-button">
+
+                    🔐 Change Password
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+        <!-- BACK -->
+
+        <a class="back"
+           href="/dashboard">
+
+            ← Back to Dashboard
+
+        </a>
+
+
+    </div>
+
+
+</body>
+
+</html>

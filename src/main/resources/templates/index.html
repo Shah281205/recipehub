@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Recipe Hub - Home</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff8f4;
+            color: #333;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            background: #ff7043;
+            color: white;
+
+            padding: 18px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+
+            padding: 10px 16px;
+
+            border-radius: 7px;
+
+            background: rgba(255,255,255,0.15);
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+
+        /* HERO */
+
+        .hero {
+            min-height: 500px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(255,112,67,0.08),
+                    rgba(255,255,255,0.8)
+                );
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero-icon {
+            font-size: 75px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 10px 0;
+
+            color: #e85d32;
+        }
+
+        .hero h2 {
+            font-size: 25px;
+            margin: 10px 0 20px;
+
+            color: #444;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+
+            color: #666;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* BUTTONS */
+
+        .buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            font-size: 16px;
+        }
+
+        .primary {
+            background: #ff7043;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #e85d32;
+        }
+
+        .secondary {
+            background: white;
+            color: #ff7043;
+
+            border: 2px solid #ff7043;
+        }
+
+        .secondary:hover {
+            background: #fff0eb;
+        }
+
+
+        /* FEATURES */
+
+        .features {
+            max-width: 1100px;
+
+            margin: 20px auto 60px;
+
+            padding: 20px;
+        }
+
+        .features h2 {
+            text-align: center;
+
+            font-size: 30px;
+
+            margin-bottom: 30px;
+        }
+
+        .feature-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: white;
+
+            padding: 25px;
+
+            text-align: center;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .feature-card .icon {
+            font-size: 45px;
+        }
+
+        .feature-card h3 {
+            margin: 15px 0 10px;
+        }
+
+        .feature-card p {
+            color: #666;
+
+            line-height: 1.5;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            background: #333;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 15px 20px;
+
+                justify-content: center;
+            }
+
+            .logo {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero h2 {
+                font-size: 21px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🍳 Recipe Hub
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/login">
+                Login
+            </a>
+
+            <a href="/register">
+                Register
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-icon">
+                🍳
+            </div>
+
+            <h1>
+                Welcome to Recipe Hub
+            </h1>
+
+            <h2>
+                Share • Discover • Cook • Enjoy
+            </h2>
+
+            <p>
+                Recipe Hub is an online recipe sharing platform
+                where users can share their favorite recipes,
+                discover delicious new dishes, rate recipes
+                and leave comments.
+            </p>
+
+
+            <div class="buttons">
+
+                <a href="/register"
+                   class="btn primary">
+                    📝 Create Account
+                </a>
+
+                <a href="/login"
+                   class="btn secondary">
+                    🔐 Login
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FEATURES -->
+
+    <section class="features">
+
+        <h2>
+            ✨ What You Can Do
+        </h2>
+
+
+        <div class="feature-grid">
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    🍲
+                </div>
+
+                <h3>
+                    Share Recipes
+                </h3>
+
+                <p>
+                    Share your favorite recipes
+                    with the Recipe Hub community.
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    🔍
+                </div>
+
+                <h3>
+                    Discover Recipes
+                </h3>
+
+                <p>
+                    Find and explore delicious
+                    recipes shared by users.
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    ⭐
+                </div>
+
+                <h3>
+                    Rate Recipes
+                </h3>
+
+                <p>
+                    Give ratings and help others
+                    discover popular recipes.
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    ❤️
+                </div>
+
+                <h3>
+                    Save Favorites
+                </h3>
+
+                <p>
+                    Bookmark recipes and easily
+                    find them later.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            🍳 Recipe Hub
+        </p>
+
+        <p>
+            Online Recipe Sharing Platform
+        </p>
+
+        <p>
+            © 2026 Recipe Hub
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recipe Hub - Discover Recipes</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff8f0;
+        }
+
+        .navbar {
+            background-color: #e67e22;
+            color: white;
+            padding: 18px 40px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 1100px;
+            max-width: 94%;
+            margin: 40px auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e67e22;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .search-box form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .search-box button {
+            padding: 12px 20px;
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .recipes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .recipe-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .recipe-image {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .no-image {
+            height: 210px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+        }
+
+        .recipe-content {
+            padding: 22px;
+        }
+
+        .recipe-content h2 {
+            color: #e67e22;
+            margin-top: 0;
+        }
+
+        .recipe-content h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .recipe-content p {
+            color: #555;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        .rating {
+            background-color: #fff8e1;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .rating strong {
+            color: #e67e22;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 16px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        .favorite-button {
+            margin-top: 15px;
+            padding: 10px 16px;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .favorite-button.remove {
+            background-color: #c0392b;
+        }
+
+        .empty {
+            background-color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 30px;
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <div class="logo">
+            🍴 Recipe Hub
+        </div>
+
+    </div>
+
+
+    <div class="container">
+
+        <h1>
+            🔍 Discover Recipes
+        </h1>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <form action="/recipes" method="get">
+
+                <input type="text"
+                       name="search"
+                       th:value="${search}"
+                       placeholder="Search recipe or ingredient...">
+
+                <button type="submit">
+                    🔍 Search
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- NO RECIPES -->
+
+        <div class="empty"
+             th:if="${recipes.isEmpty()}">
+
+            <h2>
+                😔 No Recipes Found
+            </h2>
+
+            <p>
+                Try another search or add your own recipe.
+            </p>
+
+        </div>
+
+
+        <!-- RECIPES -->
+
+        <div class="recipes-grid"
+             th:unless="${recipes.isEmpty()}">
+
+            <div class="recipe-card"
+                 th:each="recipe : ${recipes}">
+
+
+                <!-- IMAGE -->
+
+                <div th:if="${recipe.imageUrl != null and !#strings.isEmpty(recipe.imageUrl)}">
+
+                    <img class="recipe-image"
+                         th:src="${recipe.imageUrl}"
+                         th:alt="${recipe.title}">
+
+                </div>
+
+
+                <!-- NO IMAGE -->
+
+                <div class="no-image"
+                     th:unless="${recipe.imageUrl != null and !#strings.isEmpty(recipe.imageUrl)}">
+
+                    🍳
+
+                </div>
+
+
+                <div class="recipe-content">
+
+                    <h2 th:text="${recipe.title}">
+                        Recipe Name
+                    </h2>
+
+
+                    <p th:if="${recipe.user != null}">
+
+                        👨‍🍳 Shared by:
+
+                        <strong th:text="${recipe.user.name}">
+                            User
+                        </strong>
+
+                    </p>
+
+
+                    <h3>
+                        🥕 Ingredients
+                    </h3>
+
+                    <p th:text="${recipe.ingredients}">
+                        Ingredients
+                    </p>
+
+
+                    <!-- RATING -->
+
+                    <div class="rating"
+                         th:if="${ratingsEnabled}">
+
+                        ⭐ Average Rating:
+
+                        <strong
+                            th:text="${averageRatings[recipe.id]}">
+                            0.0
+                        </strong>
+
+                        / 5
+
+                        <br>
+
+                        Total Ratings:
+
+                        <strong
+                            th:text="${totalRatings[recipe.id]}">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <!-- VIEW DETAILS -->
+
+                    <a class="button"
+                       th:href="@{/recipe-details(id=${recipe.id})}">
+
+                        👀 View Details
+
+                    </a>
+
+
+                    <!-- FAVORITE -->
+
+                    <div th:if="${favoriteStatus[recipe.id]}">
+
+                        <form action="/unfavorite"
+                              method="post">
+
+                            <input type="hidden"
+                                   name="recipeId"
+                                   th:value="${recipe.id}">
+
+                            <button type="submit"
+                                    class="favorite-button remove">
+
+                                💔 Remove Favorite
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+
+                    <div th:unless="${favoriteStatus[recipe.id]}">
+
+                        <form action="/favorite"
+                              method="post">
+
+                            <input type="hidden"
+                                   name="recipeId"
+                                   th:value="${recipe.id}">
+
+                            <button type="submit"
+                                    class="favorite-button">
+
+                                ❤️ Add to Favorites
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <a class="back"
+           href="/dashboard">
+
+            ← Back to Dashboard
+
+        </a>
+
+    </div>
+
+</body>
+
+</html>

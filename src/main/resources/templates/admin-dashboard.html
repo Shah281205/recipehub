@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recipe Hub - Admin Dashboard</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .navbar {
+            background: #ff7043;
+            color: white;
+            padding: 18px 30px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+
+            background: rgba(255,255,255,0.18);
+
+            padding: 9px 14px;
+
+            border-radius: 6px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .welcome {
+            background: white;
+            padding: 25px;
+
+            border-radius: 12px;
+
+            margin-bottom: 25px;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .welcome h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .welcome p {
+            color: #666;
+        }
+
+        .grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+            text-align: center;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .number {
+            font-size: 34px;
+            font-weight: bold;
+            color: #ff7043;
+
+            margin: 15px 0;
+        }
+
+        .card a {
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #ff7043;
+
+            color: white;
+
+            padding: 10px 18px;
+
+            border-radius: 6px;
+        }
+
+        .card a:hover {
+            background: #e85d32;
+        }
+
+        .quick {
+            margin-top: 25px;
+        }
+
+        .quick h2 {
+            color: #333;
+        }
+
+        .quick-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 15px;
+        }
+
+        .quick a {
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            color: #333;
+
+            text-align: center;
+
+            font-weight: bold;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .quick a:hover {
+            background: #fff3ee;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+
+        <h1>🍳 Recipe Hub - Admin</h1>
+
+        <div class="nav-links">
+
+            <a href="/admin/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/admin/users">
+                Users
+            </a>
+
+            <a href="/admin/recipes">
+                Recipes
+            </a>
+
+            <a href="/admin/settings">
+                Settings
+            </a>
+
+            <a href="/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+
+        <!-- WELCOME -->
+
+        <div class="welcome">
+
+            <h2>
+                👋 Welcome Admin!
+            </h2>
+
+            <p>
+                Manage users, recipes, ratings, comments
+                and system settings from this dashboard.
+            </p>
+
+        </div>
+
+
+
+        <!-- MANAGEMENT CARDS -->
+
+        <div class="grid">
+
+
+            <!-- USERS -->
+
+            <div class="card">
+
+                <h2>👥 Users</h2>
+
+                <div class="number">
+                    👤
+                </div>
+
+                <p>
+                    Manage all registered users
+                    of Recipe Hub.
+                </p>
+
+                <a href="/admin/users">
+                    Manage Users
+                </a>
+
+            </div>
+
+
+
+            <!-- RECIPES -->
+
+            <div class="card">
+
+                <h2>🍳 Recipes</h2>
+
+                <div class="number">
+                    🍲
+                </div>
+
+                <p>
+                    Approve, reject and delete
+                    submitted recipes.
+                </p>
+
+                <a href="/admin/recipes">
+                    Manage Recipes
+                </a>
+
+            </div>
+
+
+
+            <!-- SETTINGS -->
+
+            <div class="card">
+
+                <h2>⚙️ Settings</h2>
+
+                <div class="number">
+                    ⚙️
+                </div>
+
+                <p>
+                    Control recipe approval,
+                    comments and ratings.
+                </p>
+
+                <a href="/admin/settings">
+                    Open Settings
+                </a>
+
+            </div>
+
+
+
+            <!-- USER DASHBOARD -->
+
+            <div class="card">
+
+                <h2>🏠 Website</h2>
+
+                <div class="number">
+                    🏠
+                </div>
+
+                <p>
+                    Go back to the normal
+                    user dashboard.
+                </p>
+
+                <a href="/dashboard">
+                    User Dashboard
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="quick">
+
+            <h2>
+                ⚡ Quick Actions
+            </h2>
+
+
+            <div class="quick-grid">
+
+                <a href="/admin/users">
+                    👥 Manage Users
+                </a>
+
+                <a href="/admin/recipes">
+                    🍳 Manage Recipes
+                </a>
+
+                <a href="/admin/settings">
+                    ⚙️ System Settings
+                </a>
+
+                <a href="/recipes">
+                    🔍 View Recipes
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
